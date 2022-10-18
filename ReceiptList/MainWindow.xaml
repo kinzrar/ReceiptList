@@ -1,0 +1,41 @@
+﻿<Window x:Class="ReceiptList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReceiptList"
+        mc:Ignorable="d"
+        Title="Реценты настоящего Бандеровца" Height="720" Width="1240" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <!-- создать листбокс на 10 элементов в 0 строке 0 колонке -->
+        <ListBox Name="listBox"  Background="AliceBlue" FontSize="15px" FontFamily="Comic Sans MS" FontStyle="Normal" SelectionChanged="listBox_SelectionChanged">
+            <ListBoxItem>Постный борщ с фасолью.</ListBoxItem>
+            <ListBoxItem>Салат из пекинской капусты.</ListBoxItem>
+            <ListBoxItem>Курица в духовке целиком.</ListBoxItem>
+            <ListBoxItem>Вареники с картошкой.</ListBoxItem>
+            <ListBoxItem>Клубничный торт.</ListBoxItem>
+
+        </ListBox>
+        <!-- создать FlowDocumentReader в остальных ячейках-->
+        <Image x:Name="image" Grid.Column="1" Grid.Row="0" MaxWidth="400" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/510px-Flag_of_Ukraine.svg.png"></Image>
+        <FlowDocumentReader Name="flowDoc" Grid.Row="2" Grid.Column="1" Loaded="flowDoc_Loaded" MinHeight="480">
+            <FlowDocument IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
+                <Paragraph>Name</Paragraph>
+                <Paragraph>Ingredients</Paragraph>
+                <Paragraph>Steps</Paragraph>
+            </FlowDocument>
+        </FlowDocumentReader>
+
+    </Grid>
+</Window>
